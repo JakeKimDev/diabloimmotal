@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>코르부스 답 V2.0 - Immortal Edition</title>
+    <title>코르부스 답 V3.0 - Immortal Edition</title>
     <style>
         /* 디아블로 느낌의 Cinzel, Noto Serif 폰트 로드 */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Serif+KR:wght@400;700&display=swap');
@@ -169,20 +169,97 @@
         }
 
 
-        /* 공지 버튼 */
+        /* 필독 버튼 영역 */
+        .notice-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 18px 0 26px;
+        }
+
+        /* 필독 버튼 */
         .notice-button {
+            position: relative;
+            display: inline-flex;
+flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            width: clamp(280px, 42vw, 430px);
+            min-height: 74px;
+            padding: 14px 34px;
             cursor: pointer;
-            padding: 12px 22px;
-            background: linear-gradient(to bottom, #c3a36a, #7a6341);
-            color: #0a0a0c;
-            border: 1px solid #e3d9c6;
-            border-radius: 4px;
+            white-space: nowrap;
+
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.12), transparent 32%),
+                linear-gradient(180deg, #b51322 0%, #720b14 52%, #3d050a 100%);
+            color: #f5dfab;
+            border: 2px solid #caa35f;
+            border-radius: 6px;
+
             font-family: 'Noto Serif KR', serif;
             font-weight: 700;
-            font-size: 17px;
-            box-shadow: 0 0 15px rgba(195, 163, 106, 0.3);
+            font-size: clamp(24px, 2.3vw, 32px);
+            letter-spacing: .42em;
+            text-indent: .42em;
+            line-height: 1;
+            text-shadow: 0 2px 3px #000, 0 0 10px rgba(255,215,140,.35);
+
+            box-shadow:
+                0 0 0 3px #27070a,
+                0 0 0 4px rgba(202,163,95,.45),
+                0 12px 28px rgba(0,0,0,.72),
+                0 0 24px rgba(191,30,46,.5),
+                inset 0 0 20px rgba(0,0,0,.7);
+            transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
         }
-        .notice-button:hover { filter: brightness(1.1); }
+.notice-title{
+color:#f5d48a;
+margin-top:10px;
+    font-size:34px;
+    font-weight:700;
+    line-height:1;
+
+    font-family:'Cinzel','Noto Serif KR',serif;
+}
+
+.notice-sub{
+  color:#d04b4b;
+    margin-top:8px;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:1px;
+    opacity:.9;
+}
+        .notice-button::before,
+        .notice-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            background: #caa35f;
+            border: 2px solid #4a260d;
+            transform: translateY(-50%) rotate(45deg);
+            box-shadow: 0 0 8px rgba(202,163,95,.55);
+        }
+
+        .notice-button::before { left: -10px; }
+        .notice-button::after { right: -10px; }
+
+        .notice-button:hover {
+            filter: brightness(1.14);
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 0 3px #27070a,
+                0 0 0 4px rgba(230,190,112,.7),
+                0 16px 32px rgba(0,0,0,.8),
+                0 0 34px rgba(191,30,46,.72),
+                inset 0 0 20px rgba(0,0,0,.65);
+        }
+
+        .notice-button:active { transform: translateY(0); }
 
         /* 공지 팝업 */
         .notice-modal {
@@ -251,6 +328,17 @@
             .box1 { font-size: 15px; }
             .box2 { font-size: 22px; }
             .panels { gap: 100px; }
+
+            .notice-wrap { margin: 10px 0 20px; }
+            .notice-button {
+                width: calc(100% - 32px);
+                max-width: 360px;
+                min-height: 62px;
+                padding: 12px 24px;
+                font-size: 22px;
+                letter-spacing: .34em;
+                text-indent: .34em;
+            }
         }
     </style>
 </head>
@@ -259,7 +347,7 @@
         <div class="header-title">
             
             <h1>
-                코르부스 답 <span class="ver">V2.0</span> 
+                코르부스 답 <span class="ver">V3.0</span> 
                 <span class="author">by.狂夜</span>
             </h1>
         </div>
@@ -270,7 +358,13 @@
         <input class="radio" type="radio" name="group" id="s16"><input class="radio" type="radio" name="group" id="s7">
         <input class="radio" type="radio" name="group" id="s8"><input class="radio" type="radio" name="group" id="s9">
         <input class="radio" type="radio" name="group" id="s11"><input class="radio" type="radio" name="group" id="s14">
- <button type="button" class="notice-button" id="noticeOpen">필독</button>
+        <div class="notice-wrap">
+            <button type="button" class="notice-button" id="noticeOpen">
+    <span>필 독</span>
+    <span class="notice-title">(불멸단 공지)</span>
+		</button>
+        </div>
+
         <div class="tabs">
             <label class="tab" id="t1" for="s1">ㄱ</label>
             <label class="tab" id="t2" for="s2">ㄴ</label>
