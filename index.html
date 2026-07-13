@@ -268,6 +268,32 @@
 
 
         /* 공지 팝업 */
+.notice-header{
+    text-align:center;
+    margin:  10px 0 30px;
+}
+
+.notice-title-bg{
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:430px;
+    height:102px;
+
+    background:url("bt_back.png") center center no-repeat;
+    background-size:100% 100%;
+  padding-left:110px;
+    color:#f6d88a;
+    font-size:32px;
+    font-weight:bold;
+    letter-spacing:8px;
+
+    text-shadow:
+        0 2px 2px #000,
+        0 0 10px rgba(255,220,120,.35);
+}
         .notice-modal {
             display: none;
             position: fixed;
@@ -355,6 +381,9 @@
         font-size:11px;
         letter-spacing:1.5px;
     }
+
+
+
         }
 
     </style>
@@ -457,8 +486,10 @@
                 <button type="button" class="notice-close" id="noticeClose" aria-label="공지 닫기">×</button>
 <hr style="margin:25px 0;border:0;border-top:1px solid rgba(255,255,255,.15);">
 
-<h2 style="color:#ffcc66;text-align:center;">
-☆☆☆☆ 불멸단 공지 ☆☆☆☆
+<h2 class="notice-header">
+    <span class="notice-title-bg">
+        불멸단 공지
+    </span>
 </h2>
 
 <p style="line-height:1.8;">
