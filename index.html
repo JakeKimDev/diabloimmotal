@@ -733,7 +733,7 @@
     </div>
 <div class="image-viewer" id="imageViewer">
 
-    <span class="viewer-close">&times;</span>
+    <!-- <span class="viewer-close">&times;</span> -->
 
     <img id="viewerImg">
 
@@ -747,150 +747,203 @@
     </button>
 
 </div>
-    <script>
-		const viewer = document.getElementById("imageViewer");
-const viewerImg = document.getElementById("viewerImg");
-const viewerClose = document.getElementById("viewerClose");
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+    /* =========================
+       기본 요소
+    ========================= */
+    const viewer = document.getElementById("imageViewer");
+    const viewerImg = document.getElementById("viewerImg");
+    const viewerClose = document.getElementById("viewerClose");
 
-viewerClose.addEventListener("click", (event) => {
-    event.stopPropagation();
-    viewer.classList.remove("open");
-});
+    const noticeModal = document.getElementById("noticeModal");
+    const noticeOpen = document.getElementById("noticeOpen");
+    const noticeClose = document.getElementById("noticeClose");
 
-viewer.addEventListener("click", (event) => {
-    if (event.target === viewer) {
-        viewer.classList.remove("open");
-    }
-});
-        document.querySelectorAll('input[name="group"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+    let scale = 1;
+    let startDistance = 0;
+
+    /* =========================
+       자음 탭 이동
+    ========================= */
+    document.querySelectorAll('input[name="group"]').forEach((radio) => {
+        radio.addEventListener("change", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
             });
         });
-
-        const noticeModal = document.getElementById('noticeModal');
-        const noticeOpen = document.getElementById('noticeOpen');
-        const noticeClose = document.getElementById('noticeClose');
-
-        noticeOpen.addEventListener('click', () => {
-            noticeModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closeNotice() {
-            noticeModal.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        noticeClose.addEventListener('click', closeNotice);
-        noticeModal.addEventListener('click', (event) => {
-            if (event.target === noticeModal) closeNotice();
-        });
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closeNotice();
-        });
-const viewer=document.getElementById("imageViewer");
-const viewerImg=document.getElementById("viewerImg");
-
-let scale=1;
-
-document.querySelectorAll(".zoom-image").forEach(img=>{
-
-    img.addEventListener("click",()=>{
-
-        viewer.classList.add("open");
-
-        viewerImg.src=img.src;
-
-        scale=1;
-        viewerImg.style.transform="scale(1)";
     });
 
-});
+    /* =========================
+       공지 팝업
+    ========================= */
+    function openNotice() {
+        if (!noticeModal) return;
 
-viewer.addEventListener("click",(e)=>{
+        noticeModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
 
-    if(
-        e.target===viewer ||
-        e.target.classList.contains("viewer-close")
-    ){
+    function closeNotice() {
+        if (!noticeModal) return;
+
+        noticeModal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    if (noticeOpen) {
+        noticeOpen.addEventListener("click", openNotice);
+    }
+
+    if (noticeClose) {
+        noticeClose.addEventListener("click", closeNotice);
+    }
+
+    if (noticeModal) {
+        noticeModal.addEventListener("click", (event) => {
+            if (event.target === noticeModal) {
+                closeNotice();
+            }
+        });
+    }
+
+    /* =========================
+       이미지 전체보기
+    ========================= */
+    function updateImageScale() {
+        if (!viewerImg) return;
+
+        viewerImg.style.transform = `scale(${scale})`;
+    }
+
+    function openImageViewer(imageSrc) {
+        if (!viewer || !viewerImg) return;
+
+        scale = 1;
+        startDistance = 0;
+
+        viewerImg.src = imageSrc;
+        updateImageScale();
+
+        viewer.classList.add("open");
+    }
+
+    function closeImageViewer() {
+        if (!viewer || !viewerImg) return;
 
         viewer.classList.remove("open");
+
+        scale = 1;
+        startDistance = 0;
+
+        viewerImg.style.transform = "scale(1)";
+        viewerImg.removeAttribute("src");
     }
 
-});
+    document.querySelectorAll(".zoom-image").forEach((img) => {
+        img.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openImageViewer(img.src);
+        });
+    });
 
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        viewer.classList.remove("open");
-
+    if (viewerClose) {
+        viewerClose.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            closeImageViewer();
+        });
     }
 
-});
+    if (viewer) {
+        viewer.addEventListener("click", (event) => {
+            if (event.target === viewer) {
+                closeImageViewer();
+            }
+        });
 
-/* 마우스 휠 확대 */
+        /* PC 마우스 휠 확대·축소 */
+        viewer.addEventListener(
+            "wheel",
+            (event) => {
+                if (!viewer.classList.contains("open")) return;
 
-viewer.addEventListener("wheel",(e)=>{
+                event.preventDefault();
 
-    e.preventDefault();
+                scale += event.deltaY > 0 ? -0.1 : 0.1;
+                scale = Math.min(Math.max(scale, 1), 5);
 
-    scale+=e.deltaY>0?-0.1:0.1;
-
-    if(scale<1) scale=1;
-    if(scale>5) scale=5;
-
-    viewerImg.style.transform=`scale(${scale})`;
-
-},{passive:false});
-
-
-/* 모바일 핀치 줌 */
-
-let startDistance=0;
-
-viewer.addEventListener("touchstart",(e)=>{
-
-    if(e.touches.length===2){
-
-        startDistance=Math.hypot(
-
-            e.touches[0].pageX-e.touches[1].pageX,
-            e.touches[0].pageY-e.touches[1].pageY
-
+                updateImageScale();
+            },
+            { passive: false }
         );
 
-    }
+        /* 모바일 핀치 시작 */
+        viewer.addEventListener(
+            "touchstart",
+            (event) => {
+                if (event.touches.length !== 2) return;
 
-});
-
-viewer.addEventListener("touchmove",(e)=>{
-
-    if(e.touches.length===2){
-
-        e.preventDefault();
-
-        let newDistance=Math.hypot(
-
-            e.touches[0].pageX-e.touches[1].pageX,
-            e.touches[0].pageY-e.touches[1].pageY
-
+                startDistance = Math.hypot(
+                    event.touches[0].clientX - event.touches[1].clientX,
+                    event.touches[0].clientY - event.touches[1].clientY
+                );
+            },
+            { passive: true }
         );
 
-        scale*=newDistance/startDistance;
+        /* 모바일 핀치 확대·축소 */
+        viewer.addEventListener(
+            "touchmove",
+            (event) => {
+                if (
+                    event.touches.length !== 2 ||
+                    startDistance <= 0
+                ) {
+                    return;
+                }
 
-        if(scale<1) scale=1;
-        if(scale>5) scale=5;
+                event.preventDefault();
 
-        viewerImg.style.transform=`scale(${scale})`;
+                const newDistance = Math.hypot(
+                    event.touches[0].clientX - event.touches[1].clientX,
+                    event.touches[0].clientY - event.touches[1].clientY
+                );
 
-        startDistance=newDistance;
+                scale *= newDistance / startDistance;
+                scale = Math.min(Math.max(scale, 1), 5);
 
+                updateImageScale();
+                startDistance = newDistance;
+            },
+            { passive: false }
+        );
+
+        viewer.addEventListener("touchend", (event) => {
+            if (event.touches.length < 2) {
+                startDistance = 0;
+            }
+        });
     }
 
-},{passive:false});
-    </script>
+    /* =========================
+       ESC 닫기
+    ========================= */
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+
+        if (viewer && viewer.classList.contains("open")) {
+            closeImageViewer();
+            return;
+        }
+
+        if (noticeModal && noticeModal.classList.contains("open")) {
+            closeNotice();
+        }
+    });
+});
+</script>
 
 
 </body>
