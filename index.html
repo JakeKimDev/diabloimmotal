@@ -194,8 +194,9 @@
             background: var(--card-bg);
             border: 1px solid #3a342a;
             padding: 25px 45px;
-            order: 2; opacity: 0.2; transition: 0.5s;
+            opacity: 0.2; transition: 0.5s;
             box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+    scroll-margin-top: 180px;
         }
 
         /* 이정표: 고딕 양식 자음 */
@@ -222,11 +223,13 @@
         #s6:checked ~ .panels #s6-panel, #s7:checked ~ .panels #s7-panel,
         #s8:checked ~ .panels #s8-panel, #s9:checked ~ .panels #s9-panel,
         #s11:checked ~ .panels #s11-panel, #s14:checked ~ .panels #s14-panel,
-        #s16:checked ~ .panels #s16-panel {
-            order: 1; opacity: 1; 
-            border: 1px solid var(--gold);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 20px rgba(195, 163, 106, 0.1);
-        }
+      #s16:checked ~ .panels #s16-panel {
+    opacity: 1;
+    border: 1px solid var(--gold);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(195, 163, 106, 0.1);
+}
 
         /* 🚀 [변경] 이정표 활성화 시 빨간 칼라 (선택 시) */
         #s1:checked ~ .panels #s1-panel::before, #s2:checked ~ .panels #s2-panel::before,
@@ -515,7 +518,9 @@
 
 }
 
-
+    .panel{
+        scroll-margin-top: 220px;
+    }
 
         }
 
@@ -537,6 +542,9 @@
     bottom:120px;
 
 }
+    .panel{
+        scroll-margin-top: 220px;
+    }
         }
 
     </style>
@@ -601,8 +609,7 @@
             <div><div class="box1">드높은 천상의 천사가</div><div class="box2">수정회랑</div></div>
            <div><div class="box1">드루이드에게 가르침을 전수한</div><div class="box2">바실리</div></div>
         </div>
-	  <div class="panel" id="s4-panel">
-        </div>
+	
         <div class="panel" id="s5-panel">
             <div><div class="box1">만물을 통틀어 가장 위대한</div><div class="box2">임페리우스</div></div>
             <div><div class="box1">모든 야만용사의 숭배</div><div class="box2">불카토스</div></div>
@@ -634,20 +641,18 @@
             <div><div class="box1">절대 신뢰해서는 안되면 거짓</div><div class="box2">벨리알</div></div>
             <div><div class="box1">지옥의 최고위 장군이자</div><div class="box2">아즈모단</div></div>
         </div>
-	<div class="panel" id="s10-panel">
-        </div>
-
         <div class="panel" id="s11-panel">
             <div><div class="box1">케잔 남부는 무엇으로?</div><div class="box2">정글스</div></div>
-        </div>
-	<div class="panel" id="s12-panel">
-        </div>
-	<div class="panel" id="s13-panel">
         </div>
         <div class="panel" id="s14-panel">
             <div><div class="box1">호수를 품고 있으나</div><div class="box2">지도</div></div>
             <div><div class="box1">희망의 화신이자</div><div class="box2">아우리엘</div></div>
         </div>
+
+	<div class="panel" style="height:300px;">
+            
+        </div>
+
     </div>
 
         <div class="notice-modal" id="noticeModal" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
@@ -1050,16 +1055,84 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        기존 자음 탭
     ========================= */
-    document
-        .querySelectorAll('input[name="group"]')
-        .forEach((radio) => {
-            radio.addEventListener("change", () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
+    const panelMap = {
+    s1: "s1-panel",
+    s2: "s2-panel",
+    s3: "s3-panel",
+    s5: "s5-panel",
+    s6: "s6-panel",
+    s16: "s16-panel",
+    s7: "s7-panel",
+    s8: "s8-panel",
+    s9: "s9-panel",
+    s11: "s11-panel",
+    s14: "s14-panel"
+};
+
+document
+    .querySelectorAll('input[name="group"]')
+    .forEach((radio) => {
+        radio.addEventListener("change", () => {
+            const panelId = panelMap[radio.id];
+            const panel = document.getElementById(panelId);
+
+            if (!panel) return;
+
+            panel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
         });
+    });
+
+
+const panelToRadioMap = {
+    "s1-panel": "s1",
+    "s2-panel": "s2",
+    "s3-panel": "s3",
+    "s5-panel": "s5",
+    "s6-panel": "s6",
+    "s16-panel": "s16",
+    "s7-panel": "s7",
+    "s8-panel": "s8",
+    "s9-panel": "s9",
+    "s11-panel": "s11",
+    "s14-panel": "s14"
+};
+
+const panels = Object.keys(panelToRadioMap)
+    .map((panelId) => document.getElementById(panelId))
+    .filter(Boolean);
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        const visiblePanels = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+                (a, b) =>
+                    Math.abs(a.boundingClientRect.top) -
+                    Math.abs(b.boundingClientRect.top)
+            );
+
+        if (visiblePanels.length === 0) return;
+
+        const currentPanel = visiblePanels[0].target;
+        const radioId = panelToRadioMap[currentPanel.id];
+        const radio = document.getElementById(radioId);
+
+        if (radio) {
+            radio.checked = true;
+        }
+    },
+    {
+        rootMargin: "-130px 0px -55% 0px",
+        threshold: 0
+    }
+);
+
+panels.forEach((panel) => {
+    observer.observe(panel);
+});
 });
 </script>
 
