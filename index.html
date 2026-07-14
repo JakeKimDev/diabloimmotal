@@ -5,9 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>코르부스 답 V3.0 - Immortal Edition</title>
     <style>
+
+
 /* =========================
    이미지 전체보기
 ========================= */
+/* =========================
+   푸터
+========================= */
+.site-footer{
+    width:100%;
+    margin-top:120px;
+    padding:45px 20px 38px;
+
+    border-top:1px solid var(--gold-dim);
+
+    background:
+        radial-gradient(
+            circle at center top,
+            rgba(191,30,46,.08),
+            transparent 65%
+        ),
+        #08080a;
+
+    box-sizing:border-box;
+    text-align:center;
+}
+
+.footer-inner{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.footer-title{
+    margin-bottom:14px;
+
+    font-family:'Cinzel', serif;
+    color:var(--gold);
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:3px;
+
+    text-shadow:0 0 12px rgba(195,163,106,.25);
+}
+
+.footer-text{
+    margin-bottom:12px;
+
+    color:#8e8678;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.footer-email{
+    display:inline-block;
+
+    padding:11px 18px;
+
+    border:1px solid #5c482c;
+    border-radius:4px;
+
+    background:#151619;
+    color:#d6b875;
+
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.footer-email:hover{
+    color:#fff;
+    border-color:var(--gold);
+    background:#251316;
+    transform:translateY(-2px);
+}
+
+.footer-copy{
+    margin-top:22px;
+
+    color:#555;
+    font-size:12px;
+    letter-spacing:.5px;
+}
+
 
 .zoom-image{
     cursor:pointer;
@@ -111,10 +198,12 @@
             font-family: 'Noto Serif KR', serif;
             color: var(--main-text);
             margin: 0; padding: 0;
-            display: flex; justify-content: center;
+          /*  display: flex; justify-content: center;*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
         }
-
-        .wrapper { width: 100%; max-width: 1100px; padding: 0 40px 150px 40px; }
+ .wrapper { width: 100%; max-width: 1100px; padding: 0 40px 150px 40px; }
 
         /* 타이틀 영역 */
         .header-title { 
@@ -150,15 +239,27 @@
         }
 
         /* 🚀 탭 메뉴: 금속 버튼 느낌 */
-        .tabs { 
-            position: sticky; top: 0; z-index: 1000;
-            background-color: rgba(10, 10, 12, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; 
-            padding: 25px 0; margin-bottom: 120px;
-            border-bottom: 1px solid var(--gold-dim);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
+.tabs{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    width:100%;
+    box-sizing:border-box;
+
+    background:#0a0a0c;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+
+    padding:25px 0;
+    margin-bottom:120px;
+
+    border-bottom:1px solid var(--gold-dim);
+    box-shadow:0 10px 30px rgba(0,0,0,.8);
+}
 
         .tab {
             cursor: pointer; padding: 12px 20px; 
@@ -472,10 +573,25 @@
 
         /* 📱 모바일 최적화 */
         @media (max-width: 768px) {
-            .wrapper { padding: 0 20px 100px 20px; }
+      .wrapper { padding: 0 20px 100px 20px;     margin-left:8px;}
             .header-title h1 { font-size: 2.2rem; }
             .header-title h1 .ver { font-size: 1.2rem; }
-            .tabs { margin-bottom: 80px; }
+                   .tabs{
+        position:sticky;
+        top:0;
+        z-index:1000;
+
+        width:100%;
+
+        /* 상단 잘림 방지용 여유 공간 */
+        padding-top:34px;
+        padding-bottom:20px;
+        padding-left:8px;
+        margin-bottom:80px;
+
+        background:#0a0a0c;
+        flex-shrink:0;
+    }
             .tab { padding: 10px 14px; font-size: 15px; }
             .panel { padding: 10px 25px; }
             .panel::before { font-size: 50px; top: -70px; }
@@ -483,7 +599,11 @@
             .box2 { font-size: 22px; }
             .panels { gap: 100px; }
 
-            .notice-wrap { margin: 12px 0 20px; }
+         .notice-wrap { margin: 12px 0 20px; }
+
+   
+  
+   
             .notice-button { width: min(520px, 100%); padding: 0; }
             .notice-button-title { font-size: clamp(22px, 6vw, 29px); letter-spacing: clamp(6px, 2vw, 10px); }
             .notice-button-sub { margin-top: 6px; font-size: clamp(11px, 3.2vw, 14px); letter-spacing: clamp(2px, 1vw, 4px); }
@@ -521,16 +641,47 @@
     .panel{
         scroll-margin-top: 220px;
     }
+ .site-footer{
+        margin-top:80px;
+        padding:36px 16px 30px;
+    }
 
+    .footer-title{
+        font-size:16px;
+        letter-spacing:2px;
+    }
+
+    .footer-text{
+        font-size:13px;
+    }
+
+    .footer-email{
+        width:100%;
+        max-width:360px;
+        box-sizing:border-box;
+        font-size:13px;
+    }
         }
 
         @media (max-width: 480px) {
-            .wrapper { padding-left: 12px; padding-right: 12px; }
-            .notice-button { padding: 0; }
-            .notice-modal-content { padding: 62px 24px 42px; font-size: 13px; }
-            .notice-title-bg { padding-left: 22%; font-size: 20px; letter-spacing: 3px; }
-            .notice-close { top: 13px; right: 13px; width: 36px; height: 36px; font-size: 22px; }
+  .wrapper { padding-left: 12px; padding-right: 12px; }
 
+ .tabs{
+        position:sticky;
+        top:0;
+        z-index:1000;
+
+        width:100%;
+
+        /* 상단 잘림 방지용 여유 공간 */
+        padding-top:34px;
+        padding-bottom:20px;
+        padding-left:8px;
+        margin-bottom:80px;
+
+        background:#0a0a0c;
+        flex-shrink:0;
+    }
 .notice-scroll{
 
     /* 좌우 여백 */
@@ -545,6 +696,28 @@
     .panel{
         scroll-margin-top: 220px;
     }
+
+ .site-footer{
+        margin-top:80px;
+        padding:36px 16px 30px;
+    }
+
+    .footer-title{
+        font-size:16px;
+        letter-spacing:2px;
+    }
+
+    .footer-text{
+        font-size:13px;
+    }
+
+    .footer-email{
+        width:100%;
+        max-width:360px;
+        box-sizing:border-box;
+        font-size:13px;
+    }
+
         }
 
     </style>
@@ -649,10 +822,26 @@
             <div><div class="box1">희망의 화신이자</div><div class="box2">아우리엘</div></div>
         </div>
 
-	<div class="panel" style="height:300px;">
-            
-        </div>
+<footer class="site-footer">
+    <div class="footer-inner">
+    
+<div class="footer-text">
+    오류 신고, 오답 제보, 개선 의견 및 새로운 기능 제안까지
+    여러분의 소중한 의견을 기다립니다.
+</div>
 
+<a href="mailto:linkarl@naver.com?subject=코르부스 답 문의 및 제안"
+   class="footer-email">
+    💬 의견 보내기
+</a>
+
+
+<div class="footer-copy">
+    Corvus Answer V3.0 · Created by 狂夜(JAKE)<br>
+    © 2026 All rights reserved.
+</div>
+    </div>
+</footer>
     </div>
 
         <div class="notice-modal" id="noticeModal" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
@@ -744,7 +933,12 @@
             </div>
         </div>
    </div>
+
     </div>
+
+
+
+
 <div class="image-viewer" id="imageViewer">
 
     <!-- <span class="viewer-close">&times;</span> -->
@@ -1079,7 +1273,7 @@ document
             if (!panel) return;
 
             panel.scrollIntoView({
-                behavior: "smooth",
+                behavior: "auto",
                 block: "start"
             });
         });
@@ -1125,7 +1319,7 @@ const observer = new IntersectionObserver(
         }
     },
     {
-        rootMargin: "-130px 0px -55% 0px",
+        rootMargin: "-45% 0px -55% 0px",
         threshold: 0
     }
 );
