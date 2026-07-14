@@ -19,7 +19,6 @@
 }
 
 .image-viewer{
-
     position:fixed;
     inset:0;
 
@@ -30,7 +29,7 @@
     background:rgba(0,0,0,.95);
 
     z-index:99999;
-
+    overflow:hidden;
     touch-action:none;
 }
 
@@ -50,19 +49,34 @@
 }
 
 .viewer-close{
+    position:fixed;
 
-    position:absolute;
+    top:calc(16px + env(safe-area-inset-top));
+    right:16px;
 
-    top:20px;
-    right:25px;
+    z-index:100001;
 
-    color:white;
+    width:46px;
+    height:46px;
 
-    font-size:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:50%;
+
+    background:rgba(0,0,0,.75);
+    color:#fff;
+
+    font-size:34px;
+    line-height:1;
 
     cursor:pointer;
-
     user-select:none;
+    -webkit-tap-highlight-color:transparent;
+
+    box-shadow:0 4px 18px rgba(0,0,0,.6);
 }
 
 
@@ -723,8 +737,31 @@
 
     <img id="viewerImg">
 
+	    <button
+        type="button"
+        class="viewer-close"
+        id="viewerClose"
+        aria-label="이미지 닫기"
+    >
+        ×
+    </button>
+
 </div>
     <script>
+		const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImg");
+const viewerClose = document.getElementById("viewerClose");
+
+viewerClose.addEventListener("click", (event) => {
+    event.stopPropagation();
+    viewer.classList.remove("open");
+});
+
+viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) {
+        viewer.classList.remove("open");
+    }
+});
         document.querySelectorAll('input[name="group"]').forEach(radio => {
             radio.addEventListener('change', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
