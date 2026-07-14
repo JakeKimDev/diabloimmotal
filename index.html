@@ -5,6 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>코르부스 답 V3.0 - Immortal Edition</title>
     <style>
+/* =========================
+   이미지 전체보기
+========================= */
+
+.zoom-image{
+    cursor:pointer;
+    transition:.2s;
+}
+
+.zoom-image:hover{
+    opacity:.9;
+}
+
+.image-viewer{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.95);
+
+    z-index:99999;
+
+    touch-action:none;
+}
+
+.image-viewer.open{
+    display:flex;
+}
+
+.image-viewer img{
+
+    max-width:95vw;
+    max-height:95vh;
+
+    object-fit:contain;
+
+    transform-origin:center center;
+    transition:transform .05s linear;
+}
+
+.viewer-close{
+
+    position:absolute;
+
+    top:20px;
+    right:25px;
+
+    color:white;
+
+    font-size:45px;
+
+    cursor:pointer;
+
+    user-select:none;
+}
+
+
+
         /* 같은 폴더에 bt_back.png, notice_book_bg.png 파일을 두세요. */
         /* 디아블로 느낌의 Cinzel, Noto Serif 폰트 로드 */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Serif+KR:wght@400;700&display=swap');
@@ -605,13 +667,13 @@
 <strong  class="notice-danger">[보상받기]</strong>
 버튼까지 눌러야 최종 완료됩니다.</div>
                     <div> ✓ 보이지 않을 경우 <strong>좌측 문서 아이콘(퀘스트 목록)</strong>을 눌러 확인</div>
+				</br>
   <img src="img_clear.png"
-     style="
+     class="zoom-image"   style="
         width:100%;
         border-radius:10px;
         margin-bottom:20px;
-        box-shadow:0 0 20px rgba(0,0,0,.5);
-">
+        box-shadow:0 0 20px rgba(0,0,0,.5);">
 </div>
 
 <div class="notice-alert">
@@ -655,7 +717,13 @@
         </div>
    </div>
     </div>
+<div class="image-viewer" id="imageViewer">
 
+    <span class="viewer-close">&times;</span>
+
+    <img id="viewerImg">
+
+</div>
     <script>
         document.querySelectorAll('input[name="group"]').forEach(radio => {
             radio.addEventListener('change', () => {
@@ -684,7 +752,109 @@
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') closeNotice();
         });
+const viewer=document.getElementById("imageViewer");
+const viewerImg=document.getElementById("viewerImg");
 
+let scale=1;
+
+document.querySelectorAll(".zoom-image").forEach(img=>{
+
+    img.addEventListener("click",()=>{
+
+        viewer.classList.add("open");
+
+        viewerImg.src=img.src;
+
+        scale=1;
+        viewerImg.style.transform="scale(1)";
+    });
+
+});
+
+viewer.addEventListener("click",(e)=>{
+
+    if(
+        e.target===viewer ||
+        e.target.classList.contains("viewer-close")
+    ){
+
+        viewer.classList.remove("open");
+    }
+
+});
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        viewer.classList.remove("open");
+
+    }
+
+});
+
+/* 마우스 휠 확대 */
+
+viewer.addEventListener("wheel",(e)=>{
+
+    e.preventDefault();
+
+    scale+=e.deltaY>0?-0.1:0.1;
+
+    if(scale<1) scale=1;
+    if(scale>5) scale=5;
+
+    viewerImg.style.transform=`scale(${scale})`;
+
+},{passive:false});
+
+
+/* 모바일 핀치 줌 */
+
+let startDistance=0;
+
+viewer.addEventListener("touchstart",(e)=>{
+
+    if(e.touches.length===2){
+
+        startDistance=Math.hypot(
+
+            e.touches[0].pageX-e.touches[1].pageX,
+            e.touches[0].pageY-e.touches[1].pageY
+
+        );
+
+    }
+
+});
+
+viewer.addEventListener("touchmove",(e)=>{
+
+    if(e.touches.length===2){
+
+        e.preventDefault();
+
+        let newDistance=Math.hypot(
+
+            e.touches[0].pageX-e.touches[1].pageX,
+            e.touches[0].pageY-e.touches[1].pageY
+
+        );
+
+        scale*=newDistance/startDistance;
+
+        if(scale<1) scale=1;
+        if(scale>5) scale=5;
+
+        viewerImg.style.transform=`scale(${scale})`;
+
+        startDistance=newDistance;
+
+    }
+
+},{passive:false});
     </script>
+
+
 </body>
 </html>
