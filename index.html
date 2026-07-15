@@ -12,6 +12,66 @@
 /* =========================
    푸터
 ========================= */
+.schedule-button{
+    text-decoration:none;
+    display:flex;
+}
+.schedule-link-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin:18px 0 26px;
+}
+
+.schedule-link-button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:min(420px, 92%);
+    min-height:64px;
+    padding:14px 24px;
+
+    box-sizing:border-box;
+    text-decoration:none;
+
+    color:#f4d58b;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:4px;
+
+    border:1px solid #c3a36a;
+    border-radius:5px;
+
+    background:
+        linear-gradient(to bottom, #7f111c, #39070c);
+
+    box-shadow:
+        0 0 18px rgba(191,30,46,.4),
+        inset 0 0 12px rgba(255,255,255,.06);
+
+    transition:.2s ease;
+}
+
+.schedule-link-button:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.12);
+}
+
+.schedule-link-button:active{
+    transform:scale(.98);
+}
+
+@media(max-width:768px){
+    .schedule-link-button{
+        width:94%;
+        min-height:56px;
+        font-size:18px;
+        letter-spacing:2px;
+    }
+}
+
+
 .site-footer{
     width:100%;
     margin-top:120px;
@@ -712,6 +772,13 @@
         <span class="notice-button-title">필 독</span>
         <span class="notice-button-sub">불멸단 공지</span>
     </button>
+</div>
+
+<div class="notice-wrap">
+    <a href="immortal_schedule.html" class="notice-button schedule-button">
+        <span class="notice-button-title">일 정</span>
+        <span class="notice-button-sub">불멸단 주간 일정</span>
+    </a>
 </div>
 
         <div class="tabs">
