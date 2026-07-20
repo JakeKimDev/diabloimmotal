@@ -8,38 +8,174 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Serif+KR:wght@400;600;700;900&display=swap');
 :root{--bg:#08090b;--panel:#12151a;--gold:#caa765;--gold-bright:#f0cf88;--gold-dim:#6f5937;--text:#eee3cf;--muted:#9c927f;--blue:#6ea6ff;--orange:#e8914d;--green:#61a866;--pink:#e06b79;}
 *{box-sizing:border-box} body{margin:0;color:var(--text);font-family:'Noto Serif KR',serif;background:radial-gradient(circle at 50% 0%,rgba(142,22,34,.14),transparent 36%),linear-gradient(180deg,#0b0c0f,#050608 70%);min-height:100vh} button{font:inherit}.page{width:min(1460px,100%);margin:0 auto;padding:28px 24px 80px}.hero{position:relative;text-align:center;padding:32px 24px 28px;border:1px solid var(--gold-dim);background:linear-gradient(180deg,rgba(24,29,38,.96),rgba(10,12,16,.96));box-shadow:inset 0 0 40px rgba(0,0,0,.75),0 18px 50px rgba(0,0,0,.45)}.hero:before,.hero:after{content:"";position:absolute;top:50%;width:23%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}.hero:before{left:3%}.hero:after{right:3%}.hero h1{position:relative;z-index:1;margin:0;font-family:'Cinzel','Noto Serif KR',serif;color:var(--gold-bright);font-size:clamp(30px,4vw,58px);letter-spacing:4px;text-shadow:0 0 18px rgba(202,167,101,.25),2px 3px 3px #000}.hero p{margin:8px 0 0;color:#d7c29a;font-size:clamp(13px,1.8vw,19px);letter-spacing:2px}.week-info{display:flex;justify-content:center;align-items:center;gap:14px;margin:22px 0 18px}.week-badge{padding:10px 18px;border:1px solid var(--gold);color:var(--gold-bright);background:linear-gradient(#311015,#16090c);box-shadow:inset 0 0 16px rgba(191,30,46,.35);font-weight:700}.date-range{color:var(--muted)}.desktop-schedule{display:block;overflow-x:auto;border:1px solid var(--gold-dim);background:#0d1015;box-shadow:0 22px 60px rgba(0,0,0,.45)}.schedule-grid{min-width:1140px;display:grid;grid-template-columns:150px repeat(7,1fr)}.cell{min-height:92px;padding:16px 12px;border-right:1px solid rgba(202,167,101,.24);border-bottom:1px solid rgba(202,167,101,.24);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:5px}.cell:nth-child(8n){border-right:0}.head{min-height:78px;background:linear-gradient(180deg,#1d2735,#121923);color:#f2eee7;font-weight:700;font-size:18px}.head .date{font-size:14px;color:#c8c0b2}.head.sat{color:#78a8ff}.head.sun{color:#ef646c}.time{background:linear-gradient(180deg,#1b2736,#121a25);color:#e9e3d7;font-size:20px;font-weight:700}.item-title{font-size:18px;font-weight:800;line-height:1.25}.item-sub{color:#c7bfae;font-size:13px}.vault{color:var(--blue)}.corvus{color:#9278f7}.kaion{color:var(--orange)}.blade{color:var(--green)}.rush{color:var(--pink)}.icon{font-size:24px;line-height:1}.empty{color:#48443d}.today-column{background:linear-gradient(180deg,rgba(177,25,40,.13),rgba(177,25,40,.04));box-shadow:inset 0 0 0 1px rgba(230,71,86,.28)}.notice-box{margin-top:20px;border:1px solid var(--gold-dim);background:linear-gradient(180deg,#111923,#0c1118);padding:22px 26px;display:grid;grid-template-columns:1.6fr 1fr;gap:24px}.notice-title{color:var(--gold-bright);font-size:20px;font-weight:800;margin-bottom:12px}.notice-line{margin:8px 0;line-height:1.65}.legend{border-left:1px solid rgba(202,167,101,.25);padding-left:24px}.legend-row{display:flex;align-items:center;gap:10px;margin:9px 0;color:#d7d0c3}.mobile-schedule{display:none}.mobile-day-nav{display:grid;grid-template-columns:52px 1fr 52px;gap:10px;align-items:center;margin-bottom:14px}.day-arrow{height:48px;border:1px solid var(--gold-dim);color:var(--gold-bright);background:linear-gradient(#21191a,#0f0d0e);cursor:pointer;font-size:24px;transition:.2s}.day-arrow:active{transform:scale(.94)}.day-heading{min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--gold);background:linear-gradient(#71111c,#30090e);color:#fff4d2;box-shadow:0 0 18px rgba(191,30,46,.28)}.day-heading strong{font-size:22px}.day-heading span{margin-top:3px;color:#d8be8b;font-size:13px}.mobile-card-list{display:flex;flex-direction:column;gap:12px}.mobile-card{display:grid;grid-template-columns:84px 1fr;min-height:86px;border:1px solid rgba(202,167,101,.42);background:linear-gradient(180deg,#171b21,#101318);box-shadow:inset 0 0 20px rgba(0,0,0,.45)}.mobile-time{display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(202,167,101,.28);color:var(--gold-bright);font-size:18px;font-weight:800}.mobile-detail{display:flex;align-items:center;gap:14px;padding:14px 16px}.mobile-detail .icon{width:28px;flex:none}.mobile-detail .item-title{font-size:17px}.mobile-empty{color:#6f675b}.mobile-notice{margin-top:18px;padding:18px;border:1px solid var(--gold-dim);background:#11151b}
-@media(max-width:900px){.page{padding:14px 12px 60px}.hero{padding:24px 12px 20px}.hero:before,.hero:after{display:none}.week-info{flex-direction:column;gap:8px;margin-top:16px}.desktop-schedule,.notice-box{display:none}.mobile-schedule{display:block}}
+
+.week-controller{display:grid;grid-template-columns:52px minmax(220px,430px) 52px;align-items:center;justify-content:center;gap:12px;margin:22px 0 12px}
+.week-arrow{height:48px;border:1px solid var(--gold-dim);color:var(--gold-bright);background:linear-gradient(#21191a,#0f0d0e);cursor:pointer;font-size:25px;transition:.2s}
+.week-arrow:hover{filter:brightness(1.15)}
+.week-arrow:active{transform:scale(.95)}
+.week-summary{min-height:64px;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid var(--gold);background:linear-gradient(#71111c,#30090e);color:#fff4d2;box-shadow:inset 0 0 20px rgba(255,255,255,.03),0 0 18px rgba(191,30,46,.25)}
+.week-summary strong{font-size:21px;letter-spacing:2px}
+.week-summary span{margin-top:4px;color:#d8be8b;font-size:13px}
+.week-dots{display:flex;justify-content:center;gap:8px;margin:0 0 18px}
+.week-dot{width:10px;height:10px;padding:0;border:1px solid var(--gold-dim);border-radius:50%;background:#191614;cursor:pointer}
+.week-dot.active{background:var(--gold-bright);box-shadow:0 0 8px rgba(240,207,136,.7)}
+.notice-list{margin:0;padding-left:22px}.notice-list li{margin:8px 0;line-height:1.65}
+.back-link-wrap{display:flex;justify-content:center;margin-top:24px}.back-link{display:inline-flex;align-items:center;justify-content:center;min-width:180px;min-height:48px;padding:10px 24px;border:1px solid var(--gold-dim);color:var(--gold-bright);text-decoration:none;background:linear-gradient(#24191a,#100c0d);transition:.2s}.back-link:hover{filter:brightness(1.15);transform:translateY(-1px)}
+
+@media(max-width:900px){.page{padding:14px 12px 60px}.hero{padding:24px 12px 20px}.hero:before,.hero:after{display:none}.week-info{flex-direction:column;gap:8px;margin-top:16px}.week-controller{grid-template-columns:48px minmax(0,1fr) 48px;gap:8px;margin-top:16px}.desktop-schedule,.notice-box{display:none}.mobile-schedule{display:block}}
 @media(max-width:420px){.page{padding-left:8px;padding-right:8px}.hero h1{letter-spacing:2px}.mobile-card{grid-template-columns:72px 1fr}.mobile-time{font-size:16px}.mobile-detail{padding:12px;gap:10px}}
 </style>
 </head>
 <body>
 <main class="page">
 <header class="hero"><h1>불멸단 R.M.D</h1><p>REVENGE · MYTH · DARCI</p></header>
-<section class="week-info"><div class="week-badge">불멸단 1주차</div><div class="date-range">2026.07.13 ~ 2026.07.19</div></section>
+<section class="week-controller" aria-label="주차 선택">
+<button type="button" class="week-arrow" id="prevWeek" aria-label="이전 주차">‹</button>
+<div class="week-summary"><strong id="weekTitle">불멸단 1주차</strong><span id="weekRange">2026.07.13 ~ 2026.07.19</span></div>
+<button type="button" class="week-arrow" id="nextWeek" aria-label="다음 주차">›</button>
+</section>
+<div class="week-dots" id="weekDots" aria-label="주차 바로가기"></div>
 <section class="desktop-schedule"><div class="schedule-grid" id="desktopGrid"></div></section>
-<section class="notice-box"><div><div class="notice-title">이번 주 필수 공지</div><div class="notice-line">⚔ 불멸 1주차 3일간 진행되는 불멸자의 시험 진행 / 주간 퀘스트 총 60개 완료 / 지배력 인장 구매 후 불멸 기여</div><div class="notice-line">⚔ 연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행</div><div class="notice-line">⚔ 카이온 각 클랜별 스케줄 확인 — 정시 출발</div></div><div class="legend"><div class="notice-title">일정 안내</div><div class="legend-row"><span class="vault">🛡</span> 금고방어: 점심·저녁 2타임</div><div class="legend-row"><span class="corvus">👿</span> 코르부스 탐험: 20:00 정시</div><div class="legend-row"><span class="blade">⚔</span> 칼날의 절야: 일요일 20:00</div><div class="legend-row"><span class="kaion">🔥</span> 카이온의 시련: 21:00</div></div></section>
-<section class="mobile-schedule" id="mobileSchedule"><div class="mobile-day-nav"><button type="button" class="day-arrow" id="prevDay" aria-label="이전 요일">‹</button><div class="day-heading"><strong id="mobileDayName">수요일</strong><span id="mobileDayDate">07.15</span></div><button type="button" class="day-arrow" id="nextDay" aria-label="다음 요일">›</button></div><div class="mobile-card-list" id="mobileCardList"></div><div class="mobile-notice"><div class="notice-title">이번 주 필수 공지</div><div class="notice-line">✓ 불멸자의 시험 첫 주 3일 진행</div><div class="notice-line">✓ 주간 퀘스트 총 60개 완료</div><div class="notice-line">✓ 지배력 인장 구매 후 기여</div><div class="notice-line">✓ 전 인원 금고템 선택 금지</div></div></section>
+<section class="notice-box">
+<div><div class="notice-title">이번 주 필수 공지</div><ul class="notice-list" id="desktopNoticeList"></ul></div>
+<div class="legend"><div class="notice-title">일정 안내</div><div class="legend-row"><span class="vault">🛡</span> 금고방어</div><div class="legend-row"><span class="corvus">👿</span> 코르부스 탐험</div><div class="legend-row"><span class="blade">⚔</span> 칼날의 절야</div><div class="legend-row"><span class="kaion">🔥</span> 카이온의 시련</div></div>
+</section>
+<section class="mobile-schedule" id="mobileSchedule"><div class="mobile-day-nav"><button type="button" class="day-arrow" id="prevDay" aria-label="이전 요일">‹</button><div class="day-heading"><strong id="mobileDayName">수요일</strong><span id="mobileDayDate">07.15</span></div><button type="button" class="day-arrow" id="nextDay" aria-label="다음 요일">›</button></div><div class="mobile-card-list" id="mobileCardList"></div><div class="mobile-notice"><div class="notice-title">이번 주 필수 공지</div><ul class="notice-list" id="mobileNoticeList"></ul></div></section>
+<div class="back-link-wrap"><a href="index.html" class="back-link">메인으로 돌아가기</a></div>
 </main>
 <script>
-const days=[
-{key:'mon',name:'월요일',date:'07.13',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':null,'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'tue',name:'화요일',date:'07.14',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'wed',name:'수요일',date:'07.15',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'thu',name:'목요일',date:'07.16',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'fri',name:'금요일',date:'07.17',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'sat',name:'토요일',date:'07.18',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'sun',name:'일요일',date:'07.19',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'blade',icon:'⚔',title:'칼날의 절야',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-
-  
-];
 const times=['12:00 ~ 13:00','19:00 ~ 20:00','20:00','21:00','22:00','23:00'];
-function getTodayIndex(){const t=new Date(),y=t.getFullYear(),m=t.getMonth()+1,d=t.getDate();if(y===2026&&m===7&&d>=13&&d<=19)return d-13;const js=t.getDay();return js===0?6:js-1}
-let currentDayIndex=getTodayIndex();
-function createItemHTML(item){if(!item)return '<span class="empty">일정 없음</span>';return `<span class="icon ${item.type}">${item.icon}</span><span class="item-title ${item.type}">${item.title}</span><span class="item-sub">${item.sub}</span>`}
-function renderDesktop(){const grid=document.getElementById('desktopGrid');let html='<div class="cell head">시간</div>';days.forEach((day,index)=>{const dayClass=index===5?'sat':index===6?'sun':'';const todayClass=index===currentDayIndex?'today-column':'';html+=`<div class="cell head ${dayClass} ${todayClass}"><div>${day.name}</div><div class="date">${day.date}</div></div>`});times.forEach(time=>{html+=`<div class="cell time">${time}</div>`;days.forEach((day,index)=>{const todayClass=index===currentDayIndex?'today-column':'';html+=`<div class="cell ${todayClass}">${createItemHTML(day.items[time])}</div>`})});grid.innerHTML=html}
-function renderMobile(){const day=days[currentDayIndex];document.getElementById('mobileDayName').textContent=day.name;document.getElementById('mobileDayDate').textContent=day.date;document.getElementById('mobileCardList').innerHTML=times.map(time=>{const item=day.items[time];return `<article class="mobile-card"><div class="mobile-time">${time.replace(' ~ ','<br>~ ')}</div><div class="mobile-detail">${item?`<span class="icon ${item.type}">${item.icon}</span><div><div class="item-title ${item.type}">${item.title}</div><div class="item-sub">${item.sub}</div></div>`:'<div class="mobile-empty">예정된 일정이 없습니다.</div>'}</div></article>`}).join('')}
-function changeDay(amount){currentDayIndex=(currentDayIndex+amount+days.length)%days.length;renderMobile()}
-document.getElementById('prevDay').addEventListener('click',()=>changeDay(-1));document.getElementById('nextDay').addEventListener('click',()=>changeDay(1));let touchStartX=0;document.getElementById('mobileSchedule').addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].clientX},{passive:true});document.getElementById('mobileSchedule').addEventListener('touchend',e=>{const distance=e.changedTouches[0].clientX-touchStartX;if(Math.abs(distance)<55)return;changeDay(distance<0?1:-1)},{passive:true});renderDesktop();renderMobile();
+
+const week1Days=[
+{key:'mon',name:'월요일',date:'07.13',fullDate:'2026-07-13',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':null,'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'tue',name:'화요일',date:'07.14',fullDate:'2026-07-14',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'wed',name:'수요일',date:'07.15',fullDate:'2026-07-15',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'thu',name:'목요일',date:'07.16',fullDate:'2026-07-16',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'fri',name:'금요일',date:'07.17',fullDate:'2026-07-17',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'sat',name:'토요일',date:'07.18',fullDate:'2026-07-18',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'sun',name:'일요일',date:'07.19',fullDate:'2026-07-19',items:{'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'blade',icon:'⚔',title:'칼날의 절야',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}}
+];
+const week2Days=[
+{
+key:'mon',
+name:'월요일',
+date:'07.20',
+fullDate:'2026-07-20',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'tue',
+name:'화요일',
+date:'07.21',
+fullDate:'2026-07-21',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':null,
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'wed',
+name:'수요일',
+date:'07.22',
+fullDate:'2026-07-22',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'thu',
+name:'목요일',
+date:'07.23',
+fullDate:'2026-07-23',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':null,
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'fri',
+name:'금요일',
+date:'07.24',
+fullDate:'2026-07-24',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'sat',
+name:'토요일',
+date:'07.25',
+fullDate:'2026-07-25',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':null,
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+},
+{
+key:'sun',
+name:'일요일',
+date:'07.26',
+fullDate:'2026-07-26',
+items:{
+'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
+'20:00':{type:'blade',icon:'⚔',title:'칼날의 절야',sub:'연합 전체'},
+'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
+}
+}
+];
+const weeks=[
+{title:'불멸단 1주차',range:'2026.07.13 ~ 2026.07.19',days:week1Days,notices:['불멸 1주차 3일간 진행되는 불멸자의 시험 진행','주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 각 클랜별 스케줄 확인 — 정시 출발']},
+{title:'불멸단 2주차',range:'2026.07.20 ~ 2026.07.26',days:week2Days,notices:[,'주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 일정은 21:00,22:00,23:00 선착순']}
+];
+
+function localDateString(date){const y=date.getFullYear();const m=String(date.getMonth()+1).padStart(2,'0');const d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+function initialPosition(){const today=localDateString(new Date());for(let w=0;w<weeks.length;w++){const d=weeks[w].days.findIndex(day=>day.fullDate===today);if(d!==-1)return{week:w,day:d}}const js=new Date().getDay();return{week:0,day:js===0?6:js-1}}
+const start=initialPosition();let currentWeekIndex=start.week;let currentDayIndex=start.day;
+function currentWeek(){return weeks[currentWeekIndex]}
+function itemHTML(item){if(!item)return '<span class="empty">일정 없음</span>';return `<span class="icon ${item.type}">${item.icon}</span><span class="item-title ${item.type}">${item.title}</span><span class="item-sub">${item.sub}</span>`}
+function renderHeader(){const week=currentWeek();document.getElementById('weekTitle').textContent=week.title;document.getElementById('weekRange').textContent=week.range}
+function renderDots(){const box=document.getElementById('weekDots');box.innerHTML=weeks.map((w,i)=>`<button type="button" class="week-dot ${i===currentWeekIndex?'active':''}" data-index="${i}" aria-label="${w.title}"></button>`).join('');box.querySelectorAll('.week-dot').forEach(btn=>btn.addEventListener('click',()=>{currentWeekIndex=Number(btn.dataset.index);currentDayIndex=0;renderAll()}))}
+function renderDesktop(){const week=currentWeek(),today=localDateString(new Date()),grid=document.getElementById('desktopGrid');let html='<div class="cell head">시간</div>';week.days.forEach((day,i)=>{const dayClass=i===5?'sat':i===6?'sun':'';const todayClass=day.fullDate===today?'today-column':'';html+=`<div class="cell head ${dayClass} ${todayClass}"><div>${day.name}</div><div class="date">${day.date}</div></div>`});times.forEach(time=>{html+=`<div class="cell time">${time}</div>`;week.days.forEach(day=>{const todayClass=day.fullDate===today?'today-column':'';html+=`<div class="cell ${todayClass}">${itemHTML(day.items[time])}</div>`})});grid.innerHTML=html}
+function renderMobile(){const day=currentWeek().days[currentDayIndex];document.getElementById('mobileDayName').textContent=day.name;document.getElementById('mobileDayDate').textContent=day.date;document.getElementById('mobileCardList').innerHTML=times.map(time=>{const item=day.items[time];return `<article class="mobile-card"><div class="mobile-time">${time.replace(' ~ ','<br>~ ')}</div><div class="mobile-detail">${item?`<span class="icon ${item.type}">${item.icon}</span><div><div class="item-title ${item.type}">${item.title}</div><div class="item-sub">${item.sub}</div></div>`:'<div class="mobile-empty">예정된 일정이 없습니다.</div>'}</div></article>`}).join('')}
+function renderNotices(){const html=currentWeek().notices.map(n=>`<li>${n}</li>`).join('');document.getElementById('desktopNoticeList').innerHTML=html;document.getElementById('mobileNoticeList').innerHTML=html}
+function changeWeek(amount){currentWeekIndex=(currentWeekIndex+amount+weeks.length)%weeks.length;currentDayIndex=0;renderAll()}
+function changeDay(amount){const next=currentDayIndex+amount;if(next<0){currentWeekIndex=(currentWeekIndex-1+weeks.length)%weeks.length;currentDayIndex=currentWeek().days.length-1}else if(next>=currentWeek().days.length){currentWeekIndex=(currentWeekIndex+1)%weeks.length;currentDayIndex=0}else currentDayIndex=next;renderAll()}
+function renderAll(){renderHeader();renderDots();renderDesktop();renderMobile();renderNotices()}
+document.getElementById('prevWeek').addEventListener('click',()=>changeWeek(-1));document.getElementById('nextWeek').addEventListener('click',()=>changeWeek(1));document.getElementById('prevDay').addEventListener('click',()=>changeDay(-1));document.getElementById('nextDay').addEventListener('click',()=>changeDay(1));
+let touchStartX=0,touchStartY=0;document.getElementById('mobileSchedule').addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].clientX;touchStartY=e.changedTouches[0].clientY},{passive:true});document.getElementById('mobileSchedule').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy))return;changeDay(dx<0?1:-1)},{passive:true});
+renderAll();
 </script>
 </body>
 </html>
