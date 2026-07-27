@@ -1090,12 +1090,7 @@ body::after{
     }
 
     .embers{
-        position:absolute;
-    }
-
-    .embers::before{
-        opacity:.28;
-        animation-duration:30s;
+        position:fixed;
     }
 
     .wrapper{
