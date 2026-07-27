@@ -545,6 +545,7 @@ body::after{
     display:flex;
     flex-direction:column;
     gap:140px;
+zindex : 10
 }
 
 .panel{
