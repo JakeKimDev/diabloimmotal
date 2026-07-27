@@ -133,9 +133,8 @@ body::after{
     margin:0 auto;
     padding:0 40px 150px;
 }
-
 /* =========================
-   불씨 효과
+   랜덤 불씨
 ========================= */
 .embers{
     position:fixed;
@@ -146,47 +145,59 @@ body::after{
     pointer-events:none;
 }
 
-.embers::before{
-    content:"";
-
+.ember-particle{
     position:absolute;
-    left:0;
-    right:0;
-    bottom:-260px;
+    bottom:-20px;
 
-    height:145%;
+    width:4px;
+    height:4px;
 
-    background-image:
-        radial-gradient(circle, rgba(255,215,135,.96) 0 1.6px, transparent 1.8px),
-        radial-gradient(circle, rgba(255,104,38,.86) 0 1.8px, transparent 2px),
-        radial-gradient(circle, rgba(235,225,210,.34) 0 1px, transparent 1.5px);
+    border-radius:50%;
 
-    background-size:
-        180px 220px,
-        260px 320px,
-        145px 185px;
+    background:rgba(255,150,55,.95);
 
-    background-position:
-        30px 35px,
-        140px 110px,
-        75px 160px;
+    box-shadow:
+        0 0 5px rgba(255,120,30,.9),
+        0 0 10px rgba(255,55,0,.5);
 
-    opacity:.46;
+    opacity:0;
 
-    transform:translate3d(0,140px,0);
-    animation:embersRise 24s linear infinite;
-    will-change:transform;
+    animation-name:randomEmberRise;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+
+    will-change:transform, opacity;
 }
 
-@keyframes embersRise{
-    from{
-        transform:translate3d(0,140px,0);
+@keyframes randomEmberRise{
+    0%{
+        transform:
+            translate3d(0, 20px, 0)
+            scale(.6);
+
+        opacity:0;
     }
-    to{
-        transform:translate3d(28px,-340px,0);
+
+    8%{
+        opacity:var(--ember-opacity);
+    }
+
+    70%{
+        opacity:calc(var(--ember-opacity) * .8);
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--drift-x),
+                calc(-1 * var(--rise-height)),
+                0
+            )
+            scale(.15);
+
+        opacity:0;
     }
 }
-
 /* =========================
    헤더
 ========================= */
