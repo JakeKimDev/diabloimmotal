@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>코르부스 답 V3.1 - Immortal Edition</title>
+    <title>코르부스 답 V3.0 - Immortal Edition</title>
     <link rel="stylesheet" href="corvus_v4_style.css">
 </head>
 <body>
-<div class="embers"></div>
+<div class="embers" id="embers"></div>
 
     <div class="wrapper">
         <div class="header-title">
             
             <h1>
-                코르부스 답 <span class="ver">V3.1</span> 
+                코르부스 답 <span class="ver">V3.0</span> 
                 <span class="author">by.狂夜</span>
             </h1>
         </div>
@@ -131,7 +131,7 @@
 
 
 <div class="footer-copy">
-    Corvus Answer V3.1 · Created by 狂夜(JAKE)<br>
+    Corvus Answer V3.0 · Created by 狂夜(JAKE)<br>
     © 2026 All rights reserved.
 </div>
     </div>
@@ -621,6 +621,104 @@ const observer = new IntersectionObserver(
 panels.forEach((panel) => {
     observer.observe(panel);
 });
+
+
+
+/* =========================
+   랜덤 불씨 생성
+========================= */
+const embersContainer = document.getElementById("embers");
+
+function createEmber() {
+    if (!embersContainer) return;
+
+    const ember = document.createElement("span");
+    ember.className = "ember-particle";
+
+    let startX;
+
+const area = Math.random();
+
+if (area < 0.4) {
+    // 왼쪽 용암 지역
+    startX = Math.random() * 28;
+} else if (area < 0.8) {
+    // 오른쪽 용암 지역
+    startX = 72 + Math.random() * 28;
+} else {
+    // 중앙에는 가끔만
+    startX = 28 + Math.random() * 44;
+}
+
+    const size = 1.5 + Math.random() * 4;
+    const duration = 7 + Math.random() * 9;
+    const riseHeight = 350 + Math.random() * 650;
+    const driftX = -100 + Math.random() * 200;
+    const opacity = 0.35 + Math.random() * 0.65;
+
+    const red = 240 + Math.floor(Math.random() * 15);
+    const green = 70 + Math.floor(Math.random() * 110);
+    const blue = 10 + Math.floor(Math.random() * 40);
+
+    ember.style.left = `${startX}%`;
+
+    ember.style.width = `${size}px`;
+    ember.style.height = `${size}px`;
+
+    ember.style.animationDuration = `${duration}s`;
+
+    ember.style.setProperty(
+        "--rise-height",
+        `${riseHeight}px`
+    );
+
+    ember.style.setProperty(
+        "--drift-x",
+        `${driftX}px`
+    );
+
+    ember.style.setProperty(
+        "--ember-opacity",
+        opacity
+    );
+
+    ember.style.background =
+        `rgba(${red}, ${green}, ${blue}, 1)`;
+
+    ember.style.boxShadow = `
+        0 0 ${size * 1.5}px rgba(255,120,30,.9),
+        0 0 ${size * 3}px rgba(255,50,0,.45)
+    `;
+
+    embersContainer.appendChild(ember);
+
+    ember.addEventListener("animationend", () => {
+        ember.remove();
+    });
+}
+
+/* 처음 화면에 여러 개 분산 */
+for (let i = 0; i < 80; i++) {
+    setTimeout(createEmber, Math.random() * 5000);
+}
+
+/* 이후 계속 랜덤 생성 */
+function scheduleNextEmber() {
+    const delay = 180 + Math.random() * 120;
+
+    setTimeout(() => {
+        const count = 2 + Math.floor(Math.random() * 4);
+
+for (let i = 0; i < count; i++) {
+    createEmber(false);
+}
+        scheduleNextEmber();
+    }, delay);
+}
+
+scheduleNextEmber();
+
+
 });
 </script>
 
