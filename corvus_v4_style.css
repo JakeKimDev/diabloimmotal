@@ -19,6 +19,8 @@
 
 html{
     scroll-behavior:smooth;
+    margin:0;
+    min-height:100%;
 }
 
 body{
@@ -137,29 +139,30 @@ body::after{
    랜덤 불씨
 ========================= */
 .embers{
-    position:fixed;
-    inset:0;
-    z-index:2;
+    position:fixed !important;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+
+    width:100vw;
+    height:100vh;
+    height:100dvh;
 
     overflow:hidden;
     pointer-events:none;
-}
 
+    z-index:4;
+
+    transform:none !important;
+    contain:none;
+}
 .ember-particle{
     position:absolute;
+    left:0;
     bottom:-20px;
 
-    width:4px;
-    height:4px;
-
     border-radius:50%;
-
-    background:rgba(255,150,55,.95);
-
-    box-shadow:
-        0 0 5px rgba(255,120,30,.9),
-        0 0 10px rgba(255,55,0,.5);
-
     opacity:0;
 
     animation-name:randomEmberRise;
@@ -168,7 +171,6 @@ body::after{
 
     will-change:transform, opacity;
 }
-
 @keyframes randomEmberRise{
     0%{
         transform:
@@ -1089,8 +1091,13 @@ body::after{
         animation:none;
     }
 
-    .embers{
-        position:fixed;
+      .embers{
+        position:fixed !important;
+        inset:0 !important;
+
+        width:100vw !important;
+        height:100vh !important;
+        height:100dvh !important;
     }
 
     .wrapper{
