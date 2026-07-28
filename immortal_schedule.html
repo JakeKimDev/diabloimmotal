@@ -46,16 +46,16 @@
 <div class="back-link-wrap"><a href="index.html" class="back-link">메인으로 돌아가기</a></div>
 </main>
 <script>
-const times=['08:00','12:00 ~ 13:00','19:00 ~ 20:00','20:00','21:00','22:00','23:00'];
+const times=['08:00','12:00 ~ 13:00','19:00 ~ 20:00','20:00','20:30','21:00','21:30','22:00','23:00'];
 
 const week1Days=[
 {key:'mon',name:'월요일',date:'07.13',fullDate:'2026-07-13',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':null,'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'tue',name:'화요일',date:'07.14',fullDate:'2026-07-14',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'wed',name:'수요일',date:'07.15',fullDate:'2026-07-15',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'thu',name:'목요일',date:'07.16',fullDate:'2026-07-16',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'fri',name:'금요일',date:'07.17',fullDate:'2026-07-17',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'sat',name:'토요일',date:'07.18',fullDate:'2026-07-18',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
-{key:'sun',name:'일요일',date:'07.19',fullDate:'2026-07-19',items:{'08:00': null,'12:00 ~ 13:00':null,'19:00 ~ 20:00':null,'20:00':{type:'blade',icon:'⚔',title:'칼날의 철야',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}}
+{key:'tue',name:'화요일',date:'07.14',fullDate:'2026-07-14',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'20:30':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'wed',name:'수요일',date:'07.15',fullDate:'2026-07-15',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'20:30':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'thu',name:'목요일',date:'07.16',fullDate:'2026-07-16',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'20:30':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'fri',name:'금요일',date:'07.17',fullDate:'2026-07-17',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},'20:30':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Revenge',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'sat',name:'토요일',date:'07.18',fullDate:'2026-07-18',items:{'08:00': null,'12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},'20:00':null,'20:30':null,'21:00':{type:'kaion',icon:'🔥',title:'카이온 Myth',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}},
+{key:'sun',name:'일요일',date:'07.19',fullDate:'2026-07-19',items:{'08:00': null,'12:00 ~ 13:00':null,'19:00 ~ 20:00':null,'20:30':null,'20:00':{type:'blade',icon:'⚔',title:'칼날의 철야',sub:'연합 전체'},'21:00':{type:'kaion',icon:'🔥',title:'카이온 DARCI',sub:'21:00 정시'},'22:00':{type:'rush',icon:'✦',title:'카이온',sub:'전 클랜 선착순'},'23:00':null}}
 ];
 const week2Days=[
 {
@@ -68,6 +68,7 @@ items:{
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -83,6 +84,7 @@ items:{
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '20:00':null,
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -98,6 +100,7 @@ items:{
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -113,6 +116,7 @@ items:{
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '20:00':null,
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -128,6 +132,7 @@ items:{
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '20:00':{type:'corvus',icon:'👿',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -158,6 +163,7 @@ items:{
 '12:00 ~ 13:00':null,
 '19:00 ~ 20:00':null,
 '20:00':{type:'kaion-blade',icon:'⚔ ✦',title:'칼날의 철야<br>카이온',sub:'연합 전체<br>연합 전체(선착순)'},
+    '20:30':null,
 '21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
@@ -174,8 +180,10 @@ items:{
 '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -189,8 +197,10 @@ items:{
 '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -204,8 +214,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -219,8 +231,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -234,8 +248,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -249,8 +265,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -264,8 +282,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':null,
 '19:00 ~ 20:00':null,
-'20:00':{type:'kaion-blade',icon:'⚔ ✦',title:'칼날의 철야<br>카이온',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+  '20:00':{type:'blade',icon:'⚔ ✦',title:'칼날의 철야',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -282,8 +302,10 @@ items:{
 '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -297,8 +319,10 @@ items:{
 '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -312,8 +336,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -327,8 +353,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -342,8 +370,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'kaion-blade',icon:'👿 ✦',title:'코르부스 탐험<br>카이온 ',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':{type:'corvus',icon:'👿 ✦',title:'코르부스 탐험',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -357,8 +387,10 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
 '19:00 ~ 20:00':{type:'vault',icon:'🛡',title:'금고방어',sub:'연합 전체'},
-'20:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'20:00':null,
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -372,8 +404,11 @@ items:{
   '08:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '12:00 ~ 13:00':null,
 '19:00 ~ 20:00':null,
-'20:00':{type:'kaion-blade',icon:'⚔ ✦',title:'칼날의 철야<br>카이온',sub:'연합 전체<br>연합 전체(선착순)'},
-'21:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+  '20:00':{type:'blade',icon:'⚔ ✦',title:'칼날의 철야',sub:'연합 전체'},
+    '20:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+'21:00':null,
+    '21:30':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
+
 '22:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'},
 '23:00':{type:'rush',icon:'✦',title:'카이온',sub:'연합 전체(선착순)'}
 }
@@ -384,7 +419,7 @@ const weeks=[
 {title:'불멸단 1주차',range:'2026.07.13 ~ 2026.07.19',days:week1Days,notices:['불멸 1주차 3일간 진행되는 불멸자의 시험 진행','주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 각 클랜별 스케줄 확인 — 정시 출발']},
 {title:'불멸단 2주차',range:'2026.07.20 ~ 2026.07.26',days:week2Days,notices:[,'주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 일정은 08:00, 21:00, 22:00, 23:00 선착순']},
 {title:'불멸단 3주차',range:'2026.07.27 ~ 2026.08.02',days:week3Days,notices:[,'주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 일정은 08:00, 20:00, 21:00, 22:00, 23:00 선착순']},
-  {title:'불멸단 4주차',range:'2026.08.03 ~ 2026.08.09',days:week4Days,notices:[,'주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 일정은 08:00, 20:00, 21:00, 22:00, 23:00 선착순']}
+  {title:'불멸단 4주차',range:'2026.08.03 ~ 2026.08.09',days:week4Days,notices:[,'주간 퀘스트 총 60개 완료','지배력 인장 구매 후 불멸 기여','연합 전 인원 금고템 선택 금지 — 금고템은 올랜덤 방식으로 진행','카이온 일정은 08:00, 20:30, 21:30, 22:00, 23:00 선착순']}
 ];
 
 function localDateString(date){const y=date.getFullYear();const m=String(date.getMonth()+1).padStart(2,'0');const d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
